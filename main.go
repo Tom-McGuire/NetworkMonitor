@@ -8,7 +8,6 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	//"io/ioutil"
 )
 
 const logging bool = true
