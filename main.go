@@ -15,12 +15,12 @@ const fileName = "test"
 
 // Device is the holding information for all PACP's in the system
 type Device struct {
-	Name         string `json:"name"`
-	Type         string `json:"type"`
-	ProcessorNum string `json:"pronum"`
-	IPAddress    string `json:"ip"`
-	Subnet       string `json:"sub"`
-	Gateway      string `json:"gateway"`
+	Name      string `json:"name"`
+	Type      string `json:"type"`
+	Num       string `json:"pronum"`
+	IPAddress string `json:"ip"`
+	Subnet    string `json:"sub"`
+	Gateway   string `json:"gateway"`
 }
 
 //Sys1 is all of system 1's Devices
@@ -39,46 +39,46 @@ var (
 var Systems = make(map[string]interface{})
 
 func dummyData() { // this is to create some dummy data when the server first starts
-	PACP1 := &Device{
-		Name:         "Tom",
-		Type:         "PACP",
-		ProcessorNum: "1",
-		IPAddress:    "10.101.1.216",
-		Subnet:       "255.255.255.0",
-		Gateway:      "10.101.1.1",
+	PC1 := &Device{
+		Name:      "Tom",
+		Type:      "PC",
+		Num:       "1",
+		IPAddress: "10.101.1.216",
+		Subnet:    "255.255.255.0",
+		Gateway:   "10.101.1.1",
 	}
-	PACP2 := &Device{
-		Name:         "Tom 2",
-		Type:         "PACP",
-		ProcessorNum: "2",
-		IPAddress:    "10.101.1.243",
-		Subnet:       "255.255.255.0",
-		Gateway:      "10.101.1.1",
+	PC2 := &Device{
+		Name:      "Tom 2",
+		Type:      "PC",
+		Num:       "2",
+		IPAddress: "10.101.1.243",
+		Subnet:    "255.255.255.0",
+		Gateway:   "10.101.1.1",
 	}
-	PACP3 := &Device{
-		Name:         "John",
-		Type:         "MSC 1",
-		ProcessorNum: "1",
-		IPAddress:    "10.101.1.242",
-		Subnet:       "255.255.255.0",
-		Gateway:      "10.101.1.1",
+	Print1 := &Device{
+		Name:      "John",
+		Type:      "Printer",
+		Num:       "1",
+		IPAddress: "10.101.1.242",
+		Subnet:    "255.255.255.0",
+		Gateway:   "10.101.1.1",
 	}
-	PACP4 := &Device{
-		Name:         "Bob",
-		Type:         "MSC 4",
-		ProcessorNum: "1",
-		IPAddress:    "10.101.1.95",
-		Subnet:       "255.255.255.0",
-		Gateway:      "10.101.1.1",
+	Fax1 := &Device{
+		Name:      "Bob",
+		Type:      "Fax",
+		Num:       "1",
+		IPAddress: "10.101.1.95",
+		Subnet:    "255.255.255.0",
+		Gateway:   "10.101.1.1",
 	}
 	//fmt.Printf("PACP1 Addr:%p\n", PACP1)
 	//fmt.Printf("PACP2 Addr:%p\n", PACP2)
 	//fmt.Printf("PACP3 Addr:%p\n", PACP3)
 	//fmt.Printf("PACP4 Addr:%p\n", PACP4)
 	//sysexample := []*Device{PACP1, PACP2}
-	Sys1 = append(Sys1, PACP1, PACP2)
-	Sys2 = append(Sys2, PACP3)
-	Sys3 = append(Sys3, PACP4)
+	Sys1 = append(Sys1, PC1, PC2)
+	Sys2 = append(Sys2, Print1)
+	Sys3 = append(Sys3, Fax1)
 
 	/*for _, Device := range sysexample {
 		fmt.Printf("NAme %s", Device.Name)
@@ -182,12 +182,12 @@ func newDevice(w http.ResponseWriter, r *http.Request) { // New Device
 		}
 		sysNum := r.FormValue("SNum")
 		newDevice := &Device{
-			Name:         r.FormValue("Nam"),
-			Type:         r.FormValue("Typ"),
-			ProcessorNum: r.FormValue("PNum"),
-			IPAddress:    r.FormValue("IPAddr"),
-			Subnet:       r.FormValue("Snet"),
-			Gateway:      r.FormValue("Gty"),
+			Name:      r.FormValue("Nam"),
+			Type:      r.FormValue("Typ"),
+			Num:       r.FormValue("PNum"),
+			IPAddress: r.FormValue("IPAddr"),
+			Subnet:    r.FormValue("Snet"),
+			Gateway:   r.FormValue("Gty"),
 		}
 		switch {
 		case sysNum == "1":
